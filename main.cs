@@ -1,13 +1,13 @@
 using System;
 
 class MainClass{
-  
+   Estoque estoque = new Estoque();
   public static void Main (string[] args) {
   double v = 1000;
   string c = "123"; 
   Cadastro Cadastro1 = new Cadastro("TESTE","Teste",0);
   Pagamento Pagamento1 = new Pagamento(v,c,1000);
-  static Estoque estoque = new Estoque();
+  
     string n=""; 
     string x = "n";
     while (x =="n"){
@@ -49,20 +49,20 @@ class MainClass{
       Console.WriteLine("4:Bolo");
       Console.WriteLine("5:Variados");
       Pedido = int.Parse(Console.ReadLine());
-      estoque(Pedido);
+      estoque_(Pedido);
       }
     }
   
-  public void estoque(int Pedido){
+  public void estoque_(int Pedido){
     if(Pedido == 1){
-      Estoque.Pao();}
+      estoque.Pao();}
     if(Pedido == 2){
-      Estoque.Leite();}
+      estoque.Leite();}
     if(Pedido == 3){
-      Estoque.Biscoito();}
+      estoque.Biscoito();}
     if(Pedido == 4){
-      Estoque.Bolo();}
+      estoque.Bolo();}
     if(Pedido == 5){
-      Estoque.Variados();}
+      estoque.Variados();}
   }
 }
