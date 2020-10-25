@@ -54,17 +54,11 @@ class MainClass{
       }
     }
   
-    public static void estoque_(int Pedido){
-      if(Pedido == 1){
-       estoque.Pao();}
-      if(Pedido == 2){
-       estoque.Leite();}
-      if(Pedido == 3){
-       estoque.Biscoito();}
-      if(Pedido == 4){
-       estoque.Bolo();}
-      if(Pedido == 5){
-       estoque.Variados();}
+    public static void IniciarVariavel(){
+      loja.produtos.Add(new Produto(0, "pao", 20, 20.5f));
+      loja.produtos.Add(new Produto(1, "pão", 20, 20.5f));
+        
+      Lista(0, "pao", 20, 20.5f,1, "pão", 20, 20.5f )
   }
 
   }
