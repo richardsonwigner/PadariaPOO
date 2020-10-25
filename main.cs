@@ -3,9 +3,11 @@ using System;
 class MainClass{
   
   public static void Main (string[] args) {
+  double v = 1000;
+  string c = "123"; 
   Cadastro Cadastro1 = new Cadastro("TESTE","Teste",0);
   Pagamento Pagamento1 = new Pagamento(v,c,1000);
-  Estoque estoque = new Estoque();
+  static Estoque estoque = new Estoque();
     string n=""; 
     string x = "n";
     while (x =="n"){
@@ -34,30 +36,33 @@ class MainClass{
       z = Console.ReadLine();
     }
     Cadastro1 = new Cadastro(n,e,s);
+  }
+
     public void pedido(){
       int Pedido = 0;
-      string x1 = "n"
-      while(x1 == "n")
+      string x1 = "n";
+      while(x1 == "n"){
       Console.WriteLine("Escolha o tipo de produto");
       Console.WriteLine("1:Pão");
       Console.WriteLine("2:Leite");
       Console.WriteLine("3:Biscoito");
       Console.WriteLine("4:Bolo");
       Console.WriteLine("5:Variados");
-      Pedido = Console.ReadLine();
+      Pedido = int.Parse(Console.ReadLine());
       estoque(Pedido);
+      }
     }
-}  
+  
   public void estoque(int Pedido){
     if(Pedido == 1){
-      estoque.Pao();}
+      Estoque.Pao();}
     if(Pedido == 2){
-      estoque.Leite();}
+      Estoque.Leite();}
     if(Pedido == 3){
-      estoque.Biscoito();}
+      Estoque.Biscoito();}
     if(Pedido == 4){
-      estoque.Bolo();}
+      Estoque.Bolo();}
     if(Pedido == 5){
-      estoque.Variados();}
+      Estoque.Variados();}
   }
 }
