@@ -33,10 +33,10 @@ class Estoque{
       if(Pedido_ == 1){
         int qtd;
         Console.WriteLine("Escolha a quantidade desejada");
-         qtd =int.Parse(Console.ReadLine());
+         qtd = int.Parse(Console.ReadLine());
          QtdPao[Pedido_]-= qtd;
-         Carinho_Quantidade[Pedido_] = qtd;
-         Console.WriteLine("TESTE {0},{1}", Carinho_Quantidade[Pedido_], QtdPao[Pedido_]);
+         //Carinho_Quantidade.Add(qtd);
+         Console.WriteLine("TESTE {0}", QtdPao[Pedido_]);
          
          
       }
