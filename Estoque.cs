@@ -9,7 +9,7 @@ class Estoque{
   List<int> Carinho_Quantidade = new List<int>();
 
   List<string> Pao_ = new List<string>();
-  List<int> QtdPao = new List<int>();
+  List<int> QtdPao = new List<int>{20,20,20,20,20};
   List<string> Leite_ = new List<string>();
   List<int> QtdLeite = new List<int>();
   List<string> Biscoito_ = new List<string>();
@@ -36,6 +36,8 @@ class Estoque{
          qtd =int.Parse(Console.ReadLine());
          QtdPao[Pedido_]-= qtd;
          Carinho_Quantidade[Pedido_] = qtd;
+         Console.WriteLine("TESTE {0},{1}", Carinho_Quantidade[Pedido_], QtdPao[Pedido_]);
+         
          
       }
     

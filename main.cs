@@ -1,7 +1,7 @@
 using System;
 
 class MainClass{
-   Estoque estoque = new Estoque();
+  static Estoque estoque = new Estoque();
   public static void Main (string[] args) {
   double v = 1000;
   string c = "123"; 
@@ -35,10 +35,11 @@ class MainClass{
       Console.WriteLine(s);
       z = Console.ReadLine();
     }
+    pedido();
     Cadastro1 = new Cadastro(n,e,s);
   }
 
-    public void pedido(){
+    public static void pedido(){
       int Pedido = 0;
       string x1 = "n";
       while(x1 == "n"){
@@ -53,16 +54,19 @@ class MainClass{
       }
     }
   
-  public void estoque_(int Pedido){
-    if(Pedido == 1){
-      estoque.Pao();}
-    if(Pedido == 2){
-      estoque.Leite();}
-    if(Pedido == 3){
-      estoque.Biscoito();}
-    if(Pedido == 4){
-      estoque.Bolo();}
-    if(Pedido == 5){
-      estoque.Variados();}
+    public static void estoque_(int Pedido){
+      if(Pedido == 1){
+       estoque.Pao();}
+      if(Pedido == 2){
+       estoque.Leite();}
+      if(Pedido == 3){
+       estoque.Biscoito();}
+      if(Pedido == 4){
+       estoque.Bolo();}
+      if(Pedido == 5){
+       estoque.Variados();}
   }
-}
+
+  }
+
+
