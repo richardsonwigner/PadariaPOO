@@ -12,7 +12,9 @@ public Pagamento (double v, string c, double l){
  chave = c; 
  limite = l;
 }
-
+  public double getLimite(){
+    return limite;
+  }
 
 
 public bool pagamentoCartao (){
