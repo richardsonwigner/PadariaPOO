@@ -1,3 +1,3 @@
-class ItemProduto{
+class produtos{
 
 }
