@@ -6,7 +6,7 @@ class Estoque{
   double total;
   double V;
   int qtd = 0;
-  List<int> Carinho_Quantidade = new List<int>();
+  List<Estoque> Carinho_Quantidade = new List<Estoque>();
 
   List<string> Pao_ = new List<string>();
   List<int> QtdPao = new List<int>{20,20,20,20,20};
@@ -35,7 +35,7 @@ class Estoque{
         Console.WriteLine("Escolha a quantidade desejada");
          qtd = int.Parse(Console.ReadLine());
          QtdPao[Pedido_]-= qtd;
-         //Carinho_Quantidade.Add(qtd);
+         Carinho_Quantidade.Add(qtd);
          Console.WriteLine("TESTE {0}", QtdPao[Pedido_]);
          
          
