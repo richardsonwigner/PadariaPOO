@@ -62,7 +62,7 @@ class MainClass{
             if(produtos.getCodigo() == Pedido){
             carrinho.getCarrinho().Add(produtos);
             foreach(Produto i in carrinho.getCarrinho())
-              Console.WriteLine(i.getNome());
+              Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
             }
  
       }
