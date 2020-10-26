@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 class Carrinho{
   
-  List<Produto> Carinho_Quantidade = new List<Produto>();
+  List<Produto> CarrinhoCliente = new List<Produto>();
+
+  public List<Produto> getCarrinho(){
+    return CarrinhoCliente;
+  }
   
 
  
