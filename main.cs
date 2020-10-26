@@ -2,6 +2,8 @@ using System;
 
 
 class MainClass{
+  static Loja loja = new Loja();
+  static Carrinho carrinho = new Carrinho();
   public static void Main (string[] args) {
   double v = 1000;
   string c = "123"; 
@@ -51,15 +53,16 @@ class MainClass{
       Console.WriteLine("5:Bebidas");
       Pedido = int.Parse(Console.ReadLine());
        if(Pedido == 1){
-         for(int i;i<5;i++)
-          Console.WriteLine("{0}:{1},{2}R$",produtos.getCodigo,produtos.getNome,produtos.getValor);
+         for(int i=0;i<5;i++)
+          Console.WriteLine("{0}:{1},{2}R$",loja.produtos[i].getCodigo(),loja.produtos[i].getNome(),loja.produtos[i].getValor());
        }
-      
+        Pedido = Console.ReadLine();
+        carrinho.Add(Pedido);
+
       }
     }
     public static void IniciarVariavel(){
-      Loja loja = new Loja();
-      
+       
       loja.produtos.Add(new Produto(0, "Pão Francês", 20,0.5f));
       loja.produtos.Add(new Produto(1, "Pão Doce", 20, 0.5f));
       loja.produtos.Add(new Produto(2, "Pão Especial", 20, 0.7f));
