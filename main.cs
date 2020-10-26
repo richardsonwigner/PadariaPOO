@@ -60,7 +60,9 @@ class MainClass{
         Pedido = int.Parse(Console.ReadLine());
           foreach(Produto produtos in loja.produtos)
             if(produtos.getCodigo() == Pedido){
-              carrinho.getCarrinho.Add(produtos);
+            carrinho.getCarrinho().Add(produtos);
+            foreach(var i in carrinho.getCarrinho())
+              Console.WriteLine(i);
             }
  
       }
