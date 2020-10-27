@@ -1,7 +1,12 @@
 using System;
-
+using System.Collections.Generic;
 
 class MainClass{
+  static int aux1;
+  static int aux2;
+  static int Pedido;
+  static string x1;
+  static string x2;
   static Loja loja = new Loja();
   static Carrinho carrinho = new Carrinho();
   public static void Main (string[] args) {
@@ -42,103 +47,47 @@ class MainClass{
 
   }
     public static void pedido(){
-      int Pedido = 0;
-      string x1 = "s";
-      while(x1 == "s"){
+      Pedido = 0;
+      x1 = "s";
+      while(x1 == "s")
       Console.WriteLine("Escolha o tipo de produto");
       Console.WriteLine("1:Pão");
       Console.WriteLine("2:Leite");
       Console.WriteLine("3:Biscoito");
       Console.WriteLine("4:Bolo");
       Console.WriteLine("5:Bebidas");
+       if(carrinho.getCarrinho().Count != 0 && x1 == "s"){
+       Console.WriteLine("Realizar Pagamento");
+       Console.WriteLine("Cancelar Pagamento");
+       }
       Pedido = int.Parse(Console.ReadLine());
        if(Pedido == 1){
-         aux1 =0; 
-         aux2 =5;
-         for(int i=0;i<5;i++)
-          Console.WriteLine("{0}:{1},{2}R$",loja.produtos[i].getCodigo(),loja.produtos[i].getNome(),loja.produtos[i].getValor());
+        aux1 =0; 
+        aux2 =5;
+        ClientePedido();
        }
-        Console.WriteLine("Digite o codigo");
-        Pedido = int.Parse(Console.ReadLine());
-          foreach(Produto produtos in loja.produtos)
-            if(produtos.getCodigo() == Pedido){
-            carrinho.getCarrinho().Add(produtos);
-            foreach(Produto i in carrinho.getCarrinho())
-              Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
-            }
-        Console.WriteLine("Deseja Pedir novamente?");
-        Console.WriteLine("Digite s ou n");
-        x1 = Console.ReadLine();
         else if(Pedido == 2){
-          aux1 =5;
-          aux2 =8;
-          for(int i=0;i>=5 && i<8;i++)
-          Console.WriteLine("{0}:{1},{2}R$",loja.produtos[i].getCodigo(),loja.produtos[i].getNome(),loja.produtos[i].getValor());
-       }
-        Console.WriteLine("Digite o codigo");
-        Pedido = int.Parse(Console.ReadLine());
-          foreach(Produto produtos in loja.produtos)
-            if(produtos.getCodigo() == Pedido){
-            carrinho.getCarrinho().Add(produtos);
-            foreach(Produto i in carrinho.getCarrinho())
-              Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
-            }
-        Console.WriteLine("Deseja Pedir novamente?");
-        Console.WriteLine("Digite s ou n");
-        x1 = Console.ReadLine();
-        else if (Pedido == 3){
-          aux1 =8;
-          aux2 =13;
-        for(int i=0;i>=8 && i<13;i++)
-          Console.WriteLine("{0}:{1},{2}R$",loja.produtos[i].getCodigo(),loja.produtos[i].getNome(),loja.produtos[i].getValor());
-       }
-        Console.WriteLine("Digite o codigo");
-        Pedido = int.Parse(Console.ReadLine());
-          foreach(Produto produtos in loja.produtos)
-            if(produtos.getCodigo() == Pedido){
-            carrinho.getCarrinho().Add(produtos);
-            foreach(Produto i in carrinho.getCarrinho())
-              Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
-            }
-        Console.WriteLine("Deseja Pedir novamente?");
-        Console.WriteLine("Digite s ou n");
-        x1 = Console.ReadLine();
-        else if (Pedido == 4){
-          aux1 =13;
-          aux2 =18;
-          for(int i=0;i>=13 && i<18;i++)
-          Console.WriteLine("{0}:{1},{2}R$",loja.produtos[i].getCodigo(),loja.produtos[i].getNome(),loja.produtos[i].getValor());
-       }
-        Console.WriteLine("Digite o codigo");
-        Pedido = int.Parse(Console.ReadLine());
-          foreach(Produto produtos in loja.produtos)
-            if(produtos.getCodigo() == Pedido){
-            carrinho.getCarrinho().Add(produtos);
-            foreach(Produto i in carrinho.getCarrinho())
-              Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
-            }
-        Console.WriteLine("Deseja Pedir novamente?");
-        Console.WriteLine("Digite s ou n");
-        x1 = Console.ReadLine();
-        else if(Pedido == 5){
-          aux1 =18;
-          aux2 =26;
-          for(int i=0;i>=18 && i<26;i++)
-          Console.WriteLine("{0}:{1},{2}R$",loja.produtos[i].getCodigo(),loja.produtos[i].getNome(),loja.produtos[i].getValor());
-       }
-        Console.WriteLine("Digite o codigo");
-        Pedido = int.Parse(Console.ReadLine());
-          foreach(Produto produtos in loja.produtos)
-            if(produtos.getCodigo() == Pedido){
-            carrinho.getCarrinho().Add(produtos);
-            foreach(Produto i in carrinho.getCarrinho())
-              Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
-            }
-        Console.WriteLine("Deseja Pedir novamente?");
-        Console.WriteLine("Digite s ou n");
-        x1 = Console.ReadLine();
+        aux1 =5;
+        aux2 =8;
+        ClientePedido();
         }
-      }
+        else if (Pedido == 3){
+        aux1 =8;
+        aux2 =13;
+        ClientePedido();
+        }
+        else if (Pedido == 4){
+        aux1 =13;
+        aux2 =18;
+        ClientePedido();
+        }
+        else if(Pedido == 5){
+        aux1 =18;
+        aux2 =26;
+        ClientePedido();
+        }
+       
+        
     }
     public static void IniciarVariavel(){
        
@@ -169,8 +118,8 @@ class MainClass{
       loja.produtos.Add(new Produto(24, "Energético", 20, 8.99f));
       loja.produtos.Add(new Produto(25, "Café com Leite", 20, 2.5f));
   }
-  public void ClientePedido(){
-        for(int i=0;i>=aux1 && i<aux2;i++)
+  public static void ClientePedido(){
+        for(int i=aux1;i>=aux1 && i<aux2;i++)
           Console.WriteLine("{0}:{1},{2}R$",loja.produtos[i].getCodigo(),loja.produtos[i].getNome(),loja.produtos[i].getValor());
        
         Console.WriteLine("Digite o codigo");
