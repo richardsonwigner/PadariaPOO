@@ -172,7 +172,7 @@ class MainClass{
   public void ClientePedido(){
         for(int i=0;i>=aux1 && i<aux2;i++)
           Console.WriteLine("{0}:{1},{2}R$",loja.produtos[i].getCodigo(),loja.produtos[i].getNome(),loja.produtos[i].getValor());
-       }
+       
         Console.WriteLine("Digite o codigo");
         Pedido = int.Parse(Console.ReadLine());
           foreach(Produto produtos in loja.produtos)
