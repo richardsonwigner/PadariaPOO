@@ -49,45 +49,44 @@ class MainClass{
     public static void pedido(){
       Pedido = 0;
       x1 = "s";
-      while(x1 == "s")
-      Console.WriteLine("Escolha o tipo de produto");
-      Console.WriteLine("1:Pão");
-      Console.WriteLine("2:Leite");
-      Console.WriteLine("3:Biscoito");
-      Console.WriteLine("4:Bolo");
-      Console.WriteLine("5:Bebidas");
-       if(carrinho.getCarrinho().Count != 0 && x1 == "s"){
-       Console.WriteLine("Realizar Pagamento");
-       Console.WriteLine("Cancelar Pagamento");
+      while(x1 == "s"){
+        Console.WriteLine("Escolha o tipo de produto");
+        Console.WriteLine("1:Pão");
+        Console.WriteLine("2:Leite");
+        Console.WriteLine("3:Biscoito");
+        Console.WriteLine("4:Bolo");
+        Console.WriteLine("5:Bebidas");
+          if(carrinho.getCarrinho().Count != 0 && x1 == "s"){
+        Console.WriteLine("6:Realizar Pagamento");
+        Console.WriteLine("7:Cancelar Pagamento");
        }
-      Pedido = int.Parse(Console.ReadLine());
-       if(Pedido == 1){
-        aux1 =0; 
-        aux2 =5;
-        ClientePedido();
-       }
-        else if(Pedido == 2){
-        aux1 =5;
-        aux2 =8;
-        ClientePedido();
+        Pedido = int.Parse(Console.ReadLine());
+        if(Pedido == 1){
+          aux1 =0; 
+          aux2 =5;
+          ClientePedido();
         }
-        else if (Pedido == 3){
-        aux1 =8;
-        aux2 =13;
-        ClientePedido();
-        }
-        else if (Pedido == 4){
-        aux1 =13;
-        aux2 =18;
-        ClientePedido();
-        }
-        else if(Pedido == 5){
-        aux1 =18;
-        aux2 =26;
-        ClientePedido();
-        }
-       
-        
+          else if(Pedido == 2){
+          aux1 =5;
+          aux2 =8;
+          ClientePedido();
+          }
+          else if (Pedido == 3){
+          aux1 =8;
+          aux2 =13;
+          ClientePedido();
+          }
+          else if (Pedido == 4){
+          aux1 =13;
+          aux2 =18;
+          ClientePedido();
+          }
+          else if(Pedido == 5){
+          aux1 =18;
+          aux2 =26;
+          ClientePedido();
+          }
+    }
     }
     public static void IniciarVariavel(){
        
