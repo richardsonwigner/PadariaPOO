@@ -6,7 +6,6 @@ class MainClass{
   static int aux2;
   static int Pedido;
   static string x1;
-  static string x2;
   static Loja loja = new Loja();
   static Carrinho carrinho = new Carrinho();
   public static void Main (string[] args) {
@@ -129,9 +128,6 @@ class MainClass{
             foreach(Produto i in carrinho.getCarrinho())
               Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
             }
-        Console.WriteLine("Deseja Pedir novamente?");
-        Console.WriteLine("Digite s ou n");
-        x1 = Console.ReadLine();
   }
   
 }
