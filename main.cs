@@ -71,7 +71,7 @@ class MainClass{
           ClientePedido("Bolo");
         }
         else if(Pedido == 5){
-          ClientePedido("Bebidas");
+          ClientePedido("Bebida");
         }
     }
 
