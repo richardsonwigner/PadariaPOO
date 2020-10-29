@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+
 class MainClass{
   static int Pedido;
   static string x1;
@@ -106,23 +107,32 @@ class MainClass{
       loja.produtos.Add(new Produto(25, "Café com Leite", 20, 2.5f,"Bebida"));
   }
   public static void ClientePedido(string categoria){
-  
-          foreach(Produto produtos in loja.produtos){
-           if(produtos.getCategoria() == categoria){
-            Console.WriteLine("{0}:{1},{2}R$",produtos.getCodigo(),produtos.getNome(),produtos.getValor());
-           }
-            
-          }
-        Console.WriteLine("Digite o codigo");
-        Pedido = int.Parse(Console.ReadLine());
-          foreach(Produto produtos in loja.produtos)
-            if(produtos.getCodigo() == Pedido){
-            carrinho.getCarrinho().Add(produtos);
-            foreach(Produto i in carrinho.getCarrinho())
-              Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
-            }
-  }
-  
+    int QTD;
+
+    foreach(Produto produtos in loja.produtos){
+      if(produtos.getCategoria() == categoria){
+      Console.WriteLine("Código:{0} Produto:{1} {2}R$,Quantidade{3}",produtos.getCodigo(),produtos.getNome(),produtos.getValor(),produtos.getQtd());
+      }
+      
+    }
+    Console.WriteLine("Digite o codigo");
+    Pedido = int.Parse(Console.ReadLine());
+    Console.WriteLine("Digite a Quantidade");
+    QTD = int.Parse(Console.ReadLine());
+    if(QTD > 0 && QTD <= 20){
+      foreach(Produto produtos in loja.produtos)
+        if(produtos.getCodigo() == Pedido){
+          carrinho.getCarrinho().Add(produtos);
+          produtos.AlterarValor(QTD);
+        }
+        foreach(Produto i in carrinho.getCarrinho())
+          Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
+        
+    }
+    else{
+      Console.WriteLine("Você digitou um valor inválido ");
+    }
+}
 }
 
 
