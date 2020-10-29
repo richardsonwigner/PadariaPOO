@@ -30,7 +30,8 @@ class Produto{
     valor = v;
     Categoria = Ctg;
   }
-  public void AlterarValor(int QTD){
+  public void DiminuirEstoque(int QTD)
+  {
     qtd -= QTD;
 
   }

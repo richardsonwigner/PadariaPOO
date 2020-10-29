@@ -15,7 +15,8 @@ class MainClass{
   IniciarVariavel();
     string n=""; 
     string x = "n";
-    while (x =="n"){
+    while (x =="n")
+    {
       Console.WriteLine("Digite seu nome");
       n = Console.ReadLine();
       Console.WriteLine("Confirma seu nome?s/n");
@@ -24,21 +25,31 @@ class MainClass{
     }
     string e ="";
     string y = "n";
-    while (y =="n"){
+    while (y =="n")
+    {
       Console.WriteLine("Digite seu endereço");
       e = Console.ReadLine();
       Console.WriteLine("Confirma seu endereço?s/n");
       Console.WriteLine(e);
       y = Console.ReadLine();
-  }
+    }
     double s = 0; 
     string z = "n";
-    while (z =="n"){
-      Console.WriteLine("Digite sua senha");
-      s = double.Parse(Console.ReadLine());
-      Console.WriteLine("Confirma sua senha?s/n");
-      Console.WriteLine(s);
-      z = Console.ReadLine();
+    while (z =="n")
+    {
+      try
+      {
+        Console.WriteLine("Digite sua senha");
+        s = double.Parse(Console.ReadLine());
+        Console.WriteLine("Confirma sua senha?s/n");
+        Console.WriteLine(s);
+        z = Console.ReadLine();
+
+      }
+      catch(Exception) 
+      {
+        Console.WriteLine("Você digitou uma senha inválida");  
+      }
     }
     pedido();
     Cadastro1 = new Cadastro(n,e,s);
@@ -57,6 +68,7 @@ class MainClass{
           if(carrinho.getCarrinho().Count != 0 && x1 == "s"){
         Console.WriteLine("6:Realizar Pagamento");
         Console.WriteLine("7:Cancelar Pagamento");
+        Console.WriteLine("8:Verificar Carrinho");
        }
         Pedido = int.Parse(Console.ReadLine());
         if(Pedido == 1){
@@ -107,39 +119,59 @@ class MainClass{
       loja.produtos.Add(new Produto(25, "Café com Leite", 20, 2.5f,"Bebida"));
   }
   public static void ClientePedido(string categoria){
+    int x = 0;
     int QTD;
-    int CodigoPedido;
-    foreach(Produto produtos in loja.produtos){
-      if(produtos.getCategoria() == categoria){
-      Console.WriteLine("Código:{0} Produto:{1} {2:C2}R$,Quantidade{3}",produtos.getCodigo(),produtos.getNome(),produtos.getValor(),produtos.getQtd());
-      }
-      
-    }
-    Console.WriteLine("Digite o codigo");
-    CodigoPedido = int.Parse(Console.ReadLine());
+    int CodigoPedido = 0;
+    Pedido = -1;
+    Produto ProdutoEscolhido = null;
     foreach(Produto produtos in loja.produtos)
-      if(produtos.getCodigo() == CodigoPedido){
-        if(produtos.getCategoria() == categoria){
-        Pedido = CodigoPedido;
+    {
+      if(produtos.getCategoria() == categoria)
+      {
+      Console.WriteLine("Código:{0} Produto:{1} {2:C2}R$,Quantidade{3}",produtos.getCodigo(),produtos.getNome(),produtos.getValor(),produtos.getQtd());
+      }     
     }
-      else{
-        Pedido = -1;
-      }
+    while(x == 0)
+      try{
+        Console.WriteLine("Digite o codigo");
+        CodigoPedido = int.Parse(Console.ReadLine());
+        x = 1;
+        }
+        catch(Exception){
+          Console.WriteLine("Você não digitou um código");
+        }
+
+    foreach(Produto produtos in loja.produtos)
+    {
       
+      if(produtos.getCategoria() == categoria)
+      {
+        if(produtos.getCodigo() == CodigoPedido)
+        {
+          Pedido = CodigoPedido;
+          ProdutoEscolhido = produtos;
+        }
+      }
+
     }
-    if(Pedido != -1 ){
+    if(Pedido != -1 )
+    {
     Console.WriteLine("Digite a Quantidade");
     QTD = int.Parse(Console.ReadLine());
-      if(QTD > 0 && QTD <= 20){
+      if(QTD > 0 && QTD <= ProdutoEscolhido.getQtd())
+      {
         foreach(Produto produtos in loja.produtos)
-          if(produtos.getCodigo() == Pedido){
+          if(produtos.getCodigo() == Pedido)
+          {
             carrinho.getCarrinho().Add(produtos);
-            produtos.AlterarValor(QTD);
+            produtos.DiminuirEstoque(QTD);
           }
           foreach(Produto i in carrinho.getCarrinho())
-            Console.WriteLine("{0},{1}", i.getNome(),i.getValor());    
+            Console.WriteLine("{0},{1}R$", i.getNome(),i.getValor()* QTD); 
+
       }
-      else{
+      else
+      {
         Console.WriteLine("Você digitou um valor inválido ");
       }
     }
