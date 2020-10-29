@@ -111,7 +111,7 @@ class MainClass{
     int CodigoPedido;
     foreach(Produto produtos in loja.produtos){
       if(produtos.getCategoria() == categoria){
-      Console.WriteLine("Código:{0} Produto:{1} {2}R$,Quantidade{3}",produtos.getCodigo(),produtos.getNome(),produtos.getValor(),produtos.getQtd());
+      Console.WriteLine("Código:{0} Produto:{1} {2:C2}R$,Quantidade{3}",produtos.getCodigo(),produtos.getNome(),produtos.getValor(),produtos.getQtd());
       }
       
     }
