@@ -44,7 +44,6 @@ class MainClass{
         Console.WriteLine("Confirma sua senha?s/n");
         Console.WriteLine(s);
         z = Console.ReadLine();
-
       }
       catch(Exception) 
       {
@@ -53,7 +52,6 @@ class MainClass{
     }
     pedido();
     Cadastro1 = new Cadastro(n,e,s);
-
   }
     public static void pedido(){
       Pedido = 0;
@@ -91,10 +89,8 @@ class MainClass{
           VerificarCarrinho();
         }
     }
-
     }
     public static void IniciarVariavel(){
-       
       loja.produtos.Add(new Produto(0, "Pão Francês", 20,0.5f,"Pao"));
       loja.produtos.Add(new Produto(1, "Pão Doce", 20, 0.5f,"Pao"));
       loja.produtos.Add(new Produto(2, "Pão Especial", 20, 0.7f,"Pao"));
@@ -147,7 +143,6 @@ class MainClass{
         }
     foreach(Produto produtos in loja.produtos)
     {
-      
       if(produtos.getCategoria() == categoria)
       {
         if(produtos.getCodigo() == CodigoPedido)
@@ -166,7 +161,6 @@ class MainClass{
         foreach(Produto produtos in loja.produtos)
           if(produtos.getCodigo() == Pedido)
           {
-            carrinho.getItemCarrinho().Add(produtos);
             carrinho.getItemCarrinho().Add(new ItemCarrinho(produtos,QTD));
             produtos.DiminuirEstoque(QTD);
           }
@@ -176,7 +170,7 @@ class MainClass{
           }
           foreach(ItemCarrinho i in carrinho.getItemCarrinho())
           {
-            sum += ItemCarrinho.TotalValor();
+            sum += i.TotalValor();
             Console.WriteLine("Total da compra {0}R$",sum);
           }  
       }
@@ -193,9 +187,9 @@ class MainClass{
     int OpCarrinho = 0;
     int CodigoPedido;
     int x = 0;
-    foreach(Produto i in carrinho.getCarrinho())
+    foreach(ItemCarrinho i in carrinho.getItemCarrinho())
     {
-      Console.WriteLine("{0},{1}",i.getCodigo(), i.getNome());
+      Console.WriteLine("{0},{1}",i.produto.getCodigo(), i.produto.getNome());
     }
     Console.WriteLine("1:Remover Produto");
     Console.WriteLine("2:Sair");
@@ -205,21 +199,15 @@ class MainClass{
       {
         Console.WriteLine("Digite o código do produto");
         CodigoPedido = int.Parse(Console.ReadLine());
-      
-        foreach(Produto produtos in carrinho.getCarrinho())
-          if(produtos.getCodigo() == CodigoPedido)
+        foreach(ItemCarrinho i in carrinho.getItemCarrinho())
+          if(i.produto.getCodigo() == CodigoPedido)
         {
-          carrinho.getCarrinho().Remove(produtos);
+          carrinho.getItemCarrinho().Remove(i);
           x =1;
           break;
         }
       }
       else
-        x = 1;
-      
-
-       
+        x = 1;   
 }
 }
-
-
