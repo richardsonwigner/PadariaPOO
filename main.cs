@@ -126,7 +126,7 @@ class MainClass{
     int x = 0;
     int QTD;
     int CodigoPedido = 0;
-    double sum 
+    double sum = 0;
     Pedido = -1;
     Produto ProdutoEscolhido = null;
     foreach(Produto produtos in loja.produtos)
