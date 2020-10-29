@@ -65,7 +65,7 @@ class MainClass{
         Console.WriteLine("3:Biscoito");
         Console.WriteLine("4:Bolo");
         Console.WriteLine("5:Bebidas");
-          if(carrinho.getCarrinho().Count != 0 && x1 == "s"){
+          if(carrinho.getItemCarrinho().Count != 0 && x1 == "s"){
         Console.WriteLine("6:Realizar Pagamento");
         Console.WriteLine("7:Cancelar Pagamento");
         Console.WriteLine("8:Verificar Carrinho");
@@ -126,6 +126,7 @@ class MainClass{
     int x = 0;
     int QTD;
     int CodigoPedido = 0;
+    double sum 
     Pedido = -1;
     Produto ProdutoEscolhido = null;
     foreach(Produto produtos in loja.produtos)
@@ -165,11 +166,19 @@ class MainClass{
         foreach(Produto produtos in loja.produtos)
           if(produtos.getCodigo() == Pedido)
           {
-            carrinho.getCarrinho().Add(produtos);
+            carrinho.getItemCarrinho().Add(produtos);
+            carrinho.getItemCarrinho().Add(new ItemCarrinho(produtos,QTD));
             produtos.DiminuirEstoque(QTD);
           }
-          foreach(Produto i in carrinho.getCarrinho())
-            Console.WriteLine("{0},{1}R$", i.getNome(),i.getValor()* QTD); 
+          foreach(ItemCarrinho i in carrinho.getItemCarrinho())
+          {
+            Console.WriteLine("{0},{1}R$", i.produto.getNome(),i.produto.getValor()*i.qtd); 
+          }
+          foreach(ItemCarrinho i in carrinho.getItemCarrinho())
+          {
+            sum += ItemCarrinho.TotalValor();
+            Console.WriteLine("Total da compra {0}R$",sum);
+          }  
       }
       else
       {
@@ -197,10 +206,12 @@ class MainClass{
         Console.WriteLine("Digite o código do produto");
         CodigoPedido = int.Parse(Console.ReadLine());
       
-        foreach(Produto produtos in loja.produtos)
+        foreach(Produto produtos in carrinho.getCarrinho())
           if(produtos.getCodigo() == CodigoPedido)
         {
           carrinho.getCarrinho().Remove(produtos);
+          x =1;
+          break;
         }
       }
       else

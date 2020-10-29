@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 class Carrinho{
   
-  List<Produto> CarrinhoCliente = new List<Produto>();
+  List<ItemCarrinho> Item_Carrinho = new List<ItemCarrinho>();
 
-  public List<Produto> getCarrinho()
+  public List<ItemCarrinho> getItemCarrinho()
   {
-    return CarrinhoCliente;
+    return Item_Carrinho;
   }
-  
+
  
   
 }
