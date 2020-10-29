@@ -108,7 +108,7 @@ class MainClass{
   }
   public static void ClientePedido(string categoria){
     int QTD;
-
+    int CodigoPedido;
     foreach(Produto produtos in loja.produtos){
       if(produtos.getCategoria() == categoria){
       Console.WriteLine("Código:{0} Produto:{1} {2}R$,Quantidade{3}",produtos.getCodigo(),produtos.getNome(),produtos.getValor(),produtos.getQtd());
@@ -116,22 +116,35 @@ class MainClass{
       
     }
     Console.WriteLine("Digite o codigo");
-    Pedido = int.Parse(Console.ReadLine());
+    CodigoPedido = int.Parse(Console.ReadLine());
+    foreach(Produto produtos in loja.produtos)
+      if(produtos.getCodigo() == CodigoPedido){
+        if(produtos.getCategoria() == categoria){
+        Pedido = CodigoPedido;
+    }
+      else{
+        Pedido = -1;
+      }
+      
+    }
+    if(Pedido != -1 ){
     Console.WriteLine("Digite a Quantidade");
     QTD = int.Parse(Console.ReadLine());
-    if(QTD > 0 && QTD <= 20){
-      foreach(Produto produtos in loja.produtos)
-        if(produtos.getCodigo() == Pedido){
-          carrinho.getCarrinho().Add(produtos);
-          produtos.AlterarValor(QTD);
-        }
-        foreach(Produto i in carrinho.getCarrinho())
-          Console.WriteLine("{0},{1}", i.getNome(),i.getValor());
-        
+      if(QTD > 0 && QTD <= 20){
+        foreach(Produto produtos in loja.produtos)
+          if(produtos.getCodigo() == Pedido){
+            carrinho.getCarrinho().Add(produtos);
+            produtos.AlterarValor(QTD);
+          }
+          foreach(Produto i in carrinho.getCarrinho())
+            Console.WriteLine("{0},{1}", i.getNome(),i.getValor());    
+      }
+      else{
+        Console.WriteLine("Você digitou um valor inválido ");
+      }
     }
-    else{
-      Console.WriteLine("Você digitou um valor inválido ");
-    }
+    else
+      Console.WriteLine("Você digitou um codigo inválido");
 }
 }
 
