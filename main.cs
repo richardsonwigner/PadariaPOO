@@ -86,6 +86,10 @@ class MainClass{
         else if(Pedido == 5){
           ClientePedido("Bebida");
         }
+        else if(Pedido == 8)
+        {
+          VerificarCarrinho();
+        }
     }
 
     }
@@ -140,7 +144,6 @@ class MainClass{
         catch(Exception){
           Console.WriteLine("Você não digitou um código");
         }
-
     foreach(Produto produtos in loja.produtos)
     {
       
@@ -152,7 +155,6 @@ class MainClass{
           ProdutoEscolhido = produtos;
         }
       }
-
     }
     if(Pedido != -1 )
     {
@@ -168,7 +170,6 @@ class MainClass{
           }
           foreach(Produto i in carrinho.getCarrinho())
             Console.WriteLine("{0},{1}R$", i.getNome(),i.getValor()* QTD); 
-
       }
       else
       {
@@ -177,6 +178,36 @@ class MainClass{
     }
     else
       Console.WriteLine("Você digitou um codigo inválido");
+}
+  public static void VerificarCarrinho()
+  {
+    int OpCarrinho = 0;
+    int CodigoPedido;
+    int x = 0;
+    foreach(Produto i in carrinho.getCarrinho())
+    {
+      Console.WriteLine("{0},{1}",i.getCodigo(), i.getNome());
+    }
+    Console.WriteLine("1:Remover Produto");
+    Console.WriteLine("2:Sair");
+    OpCarrinho = int.Parse(Console.ReadLine());
+      while( x == 0) 
+      if(OpCarrinho == 1)
+      {
+        Console.WriteLine("Digite o código do produto");
+        CodigoPedido = int.Parse(Console.ReadLine());
+      
+        foreach(Produto produtos in loja.produtos)
+          if(produtos.getCodigo() == CodigoPedido)
+        {
+          carrinho.getCarrinho().Remove(produtos);
+        }
+      }
+      else
+        x = 1;
+      
+
+       
 }
 }
 

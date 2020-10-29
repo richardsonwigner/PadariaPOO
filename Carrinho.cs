@@ -5,11 +5,11 @@ class Carrinho{
   
   List<Produto> CarrinhoCliente = new List<Produto>();
 
-  public List<Produto> getCarrinho(){
+  public List<Produto> getCarrinho()
+  {
     return CarrinhoCliente;
   }
   
-
  
   
 }
