@@ -4,32 +4,39 @@ using System.Collections.Generic;
 
 class MainClass{
   static int Pedido;
-  static string x1;
   static Loja loja = new Loja();
   static Carrinho carrinho = new Carrinho();
   static Cadastro cadastro = new Cadastro();
+  static double v;
+  static string c; 
+  static int numero;
+  static Pagamento Pagamento1 = new Pagamento(numero,c);
+
   public static void Main (string[] args) {
-  double v;
-  string c = "123"; 
-  Pagamento Pagamento1 = new Pagamento(v,c,1000);
+  int Login_Cadastro;
   IniciarVariavel(); 
   Console.WriteLine("1:Fazer Login");
   Console.WriteLine("2:Fazer Cadastro");
-  Login_Cadastro = Console.ReadLine();
+  Login_Cadastro = int.Parse(Console.ReadLine());
+  int x = 0;
+  while(x == 0)
+  {
     if(Login_Cadastro == 1)
     {
+      x = 1;
       ClienteLogin();
     }
     else if(Login_Cadastro == 2)
     {
       ClienteCadastro();
     }
+  }
   pedido();
   
   }
     public static void pedido(){
       Pedido = 0;
-      x1 = "s";
+      string x1 = "s";
       while(x1 == "s"){
         Console.WriteLine("Escolha o tipo de produto");
         Console.WriteLine("1:Pão");
@@ -39,8 +46,7 @@ class MainClass{
         Console.WriteLine("5:Bebidas");
           if(carrinho.getItemCarrinho().Count != 0 && x1 == "s"){
         Console.WriteLine("6:Realizar Pagamento");
-        Console.WriteLine("7:Cancelar Pagamento");
-        Console.WriteLine("8:Verificar Carrinho");
+        Console.WriteLine("7:Verificar Carrinho");
        }
         Pedido = int.Parse(Console.ReadLine());
         if(Pedido == 1){
@@ -61,13 +67,10 @@ class MainClass{
         }
         else if(Pedido == 6)
         {
-          //Pagamento_(sum);
+         Pagamento_();
+         Pagamento1.processarPagamento(v,c);
         }
         else if(Pedido == 7)
-        {
-          carrinho.getItemCarrinho().RemoveAll();
-        }
-        else if(Pedido == 8)
         {
           VerificarCarrinho();
         }
@@ -241,45 +244,47 @@ class MainClass{
       string ValidarNome;
       int ValidarSenha;
       int x = 0;
-      while(x=0)
-      Console.WriteLine("Escreva seu nome");
-      ValidarNome = Console.Readline();
-      Console.WriteLine("Digite sua senha");
-      ValidarSenha = Console.ReadLine();
-      foreach(Cadastro i in cadastro.getCadastro())
-      {
-        if(i.getNome() == ValidarNome)
+      while(x==0){
+        Console.WriteLine("Escreva seu nome");
+        ValidarNome = Console.ReadLine();
+        Console.WriteLine("Digite sua senha");
+        ValidarSenha = int.Parse(Console.ReadLine());
+        foreach(Cadastro i in cadastro.getCadastro())
         {
-          if(i.getSenha() == ValidarSenha)
+          if(i.getNome() == ValidarNome)
           {
-            Console.WriteLine("Login Realizado");
-            x = 1;
+            if(i.getSenha() == ValidarSenha)
+            {
+              Console.WriteLine("Login Realizado");
+              x = 1;
+            }
           }
-        }
-        else
-        {
-        try
-        {
-          Console.WriteLine("Nome ou Senha incorretos");
-          Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
-          x = int.Parse(Console.ReadLine());
+          else
+          {
+           try
+            {
+              Console.WriteLine("Nome ou Senha incorretos");
+              Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
+              x = int.Parse(Console.ReadLine());
+            }
+            catch(Exception)
+            {
+              Console.WriteLine("Apenas números são aceitos");
+            }
           }
-        catch(Exception)
-        {
-          Console.WriteLine("Apenas números são aceitos");
-        }
-        }
-      }     
+        } 
+        }    
     }
     
     public static void Pagamento_ (){
-      int numero;
-      string chave;
-      
+     
       Console.WriteLine("Digite o numero do seu cartão: ");
       numero = int.Parse(Console.ReadLine());
       Console.WriteLine("Código de Segurança: ");
-      chave =  Console.ReadLine();
+      c = Console.ReadLine();
+      Console.WriteLine("Total da compra {0}R$",v);
+
+      
       
     }
 }
