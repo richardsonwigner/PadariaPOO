@@ -30,7 +30,6 @@ class MainClass{
       ClienteCadastro();
     }
   }
-  
   }
     public static void pedido(){
       Pedido = 0;
