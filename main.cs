@@ -10,7 +10,7 @@ class MainClass{
   static double v;
   static string c; 
   static int numero;
-  static string ValidarNome;
+  static string ValidarNome = "";
   static Pagamento Pagamento1 = new Pagamento(numero,c);
 
   public static void Main (string[] args) {
@@ -240,7 +240,6 @@ class MainClass{
   }
     public static string ClienteLogin()
     {
-      string ValidarNome = " ";
       int ValidarSenha;
       int x = 0;
       while(x==0)
@@ -281,7 +280,6 @@ class MainClass{
         }    
       }
       pedido();
-      return ValidarNome;
     }
     
     public static void Pagamento_ (){
@@ -293,7 +291,7 @@ class MainClass{
       Pagamento1.processarPagamento(v,c);
       foreach(Cadastro i in cadastro.getCadastro())
       {
-        if(i.getNome() == ClienteLogin())
+        if(i.getNome() == ValidarNome)
         {
         Console.WriteLine("Nome: {0}, Endereço: {1}",i.getNome(),i.getEndereço());
         }
