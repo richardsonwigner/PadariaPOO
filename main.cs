@@ -11,8 +11,7 @@ class MainClass{
   static string c; 
   static int numero;
   static string ValidarNome = "";
-  static Pagamento Cartao = new Pagamento(numero,c);
-
+  static Pagamento Cartao = new Pagamento(,140);
   public static void Main (string[] args) {
   int Login_Cadastro;
   IniciarVariavel(); 
@@ -286,7 +285,7 @@ class MainClass{
       Console.WriteLine("Digite o numero do seu cartão: ");
       numero = int.Parse(Console.ReadLine());
       Console.WriteLine("Código de Segurança: ");
-      c = Console.ReadLine();
+      c= Console.ReadLine();
       Console.WriteLine("Total da compra {0}R$",v);
       Cartao.processarPagamento(v,c);
       Console.WriteLine("{0}",Cartao.getLimite());
