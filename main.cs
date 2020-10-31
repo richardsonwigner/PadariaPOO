@@ -17,8 +17,13 @@ class MainClass{
   Console.WriteLine("2:Fazer Cadastro");
   Login_Cadastro = Console.ReadLine();
     if(Login_Cadastro == 1)
-  
-  ClienteCadastro();
+    {
+      ClienteLogin();
+    }
+    else if(Login_Cadastro == 2)
+    {
+      ClienteCadastro();
+    }
   pedido();
   
   }
@@ -57,6 +62,10 @@ class MainClass{
         else if(Pedido == 6)
         {
           //Pagamento_(sum);
+        }
+        else if(Pedido == 7)
+        {
+          carrinho.getItemCarrinho().RemoveAll();
         }
         else if(Pedido == 8)
         {
@@ -213,7 +222,7 @@ class MainClass{
     {
       try
       {
-        Console.WriteLine("Digite sua senha");
+        Console.WriteLine("Digite sua senha(Apenas números)");
         senha = double.Parse(Console.ReadLine());
         Console.WriteLine("Confirma sua senha?s/n");
         Console.WriteLine(senha);
@@ -229,7 +238,48 @@ class MainClass{
   }
     public static void ClienteLogin()
     {
+      string ValidarNome;
+      int ValidarSenha;
+      int x = 0;
+      while(x=0)
       Console.WriteLine("Escreva seu nome");
+      ValidarNome = Console.Readline();
+      Console.WriteLine("Digite sua senha");
+      ValidarSenha = Console.ReadLine();
+      foreach(Cadastro i in cadastro.getCadastro())
+      {
+        if(i.getNome() == ValidarNome)
+        {
+          if(i.getSenha() == ValidarSenha)
+          {
+            Console.WriteLine("Login Realizado");
+            x = 1;
+          }
+        }
+        else
+        {
+        try
+        {
+          Console.WriteLine("Nome ou Senha incorretos");
+          Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
+          x = int.Parse(Console.ReadLine());
+          }
+        catch(Exception)
+        {
+          Console.WriteLine("Apenas números são aceitos");
+        }
+        }
+      }     
+    }
+    
+    public static void Pagamento_ (){
+      int numero;
+      string chave;
+      
+      Console.WriteLine("Digite o numero do seu cartão: ");
+      numero = int.Parse(Console.ReadLine());
+      Console.WriteLine("Código de Segurança: ");
+      chave =  Console.ReadLine();
       
     }
 }

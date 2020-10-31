@@ -1,26 +1,19 @@
 using System;
 
 
-class Pagamento {
+class Pagamento{
 
-string chave;
-double valor;
+string codSeg;
+double limite =100; 
 int numero;
-double limite; 
 
-
-public void Pagamento_(double v, string c, int n){
-valor = v;
-chave = c;
-numero = n;
+public Pagamento (int n, string c ){
+ numero = n;  
+ codSeg = c;
 }
 
-class Cartao {
-  public string numero;
-  private double limite;
-
-  public bool processarPagamento(double valor, string chave){
-    if (valor <= limite && chave==numero){
+public bool processarPagamento(double valor, string chave){
+  if (valor <= limite && chave== codSeg){
       limite-=valor;
       return true;
     }
@@ -28,20 +21,7 @@ class Cartao {
       return false;
     }
   }
-  //GET e SET
-  //SET obriga parametro
-  public bool setLimite(double valor){
-    if (valor <=200){
-      limite+=valor;
-      return true;
-    }
-    else
-      return false;
-  }
-
-  public double getLimite(){
-    return limite;
-  }
+ 
 
 
 }
