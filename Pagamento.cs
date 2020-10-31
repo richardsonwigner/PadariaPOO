@@ -13,7 +13,7 @@ class Pagamento
 }
 
   public bool processarPagamento(double valor,string chave){
-    if (valor <= limite && chave== codSeg)
+    if (valor <= limite)
     {
       limite-=valor;
       return true;

@@ -287,7 +287,7 @@ class MainClass{
       numero = int.Parse(Console.ReadLine());
       Console.WriteLine("Código de Segurança: ");
       c = Console.ReadLine();
-      Console.WriteLine("Total da compra {0:2}R$",v);
+      Console.WriteLine("Total da compra {0}R$",v);
       Cartao.processarPagamento(v,c);
       Console.WriteLine("{0}",Cartao.getLimite());
       foreach(Cadastro i in cadastro.getCadastro())
