@@ -11,7 +11,7 @@ class MainClass{
   static string c; 
   static int numero;
   static string ValidarNome = "";
-  static Pagamento Cartao = new Pagamento(,140);
+  static Pagamento Cartao = new Pagamento(numero,c);
   public static void Main (string[] args) {
   int Login_Cadastro;
   IniciarVariavel(); 
