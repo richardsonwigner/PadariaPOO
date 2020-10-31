@@ -289,7 +289,7 @@ class MainClass{
       c = Console.ReadLine();
       Console.WriteLine("Total da compra {0:2}R$",v);
       Cartao.processarPagamento(v,c);
-      Console.WriteLine("{0},{1}",Cartao.getLimite(),Cartao.getValor());
+      Console.WriteLine("{0}",Cartao.getLimite());
       foreach(Cadastro i in cadastro.getCadastro())
       {
         if(i.getNome() == ValidarNome)

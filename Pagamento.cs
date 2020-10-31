@@ -1,12 +1,11 @@
 using System;
 
-
 class Pagamento
 {
   string codSeg;
   double limite =200; 
   int numero;
-  double valor;
+
 
   public Pagamento (int n, string c ){
     numero = n;  
@@ -28,10 +27,7 @@ class Pagamento
   {
     return limite;
   }
-  public double getValor()
-  {
-    return valor;
-  }
+ 
 
 
 } 
