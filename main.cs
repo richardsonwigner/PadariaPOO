@@ -7,51 +7,20 @@ class MainClass{
   static string x1;
   static Loja loja = new Loja();
   static Carrinho carrinho = new Carrinho();
+  static Cadastro cadastro = new Cadastro();
   public static void Main (string[] args) {
-  double v = 1000;
+  double v;
   string c = "123"; 
-  Cadastro Cadastro1 = new Cadastro("TESTE","Teste",0);
   Pagamento Pagamento1 = new Pagamento(v,c,1000);
-  IniciarVariavel();
-    string n=""; 
-    string x = "n";
-    while (x =="n")
-    {
-      Console.WriteLine("Digite seu nome");
-      n = Console.ReadLine();
-      Console.WriteLine("Confirma seu nome?s/n");
-      Console.WriteLine(n);
-      x = Console.ReadLine();
-    }
-    string e ="";
-    string y = "n";
-    while (y =="n")
-    {
-      Console.WriteLine("Digite seu endereço");
-      e = Console.ReadLine();
-      Console.WriteLine("Confirma seu endereço?s/n");
-      Console.WriteLine(e);
-      y = Console.ReadLine();
-    }
-    double s = 0; 
-    string z = "n";
-    while (z =="n")
-    {
-      try
-      {
-        Console.WriteLine("Digite sua senha");
-        s = double.Parse(Console.ReadLine());
-        Console.WriteLine("Confirma sua senha?s/n");
-        Console.WriteLine(s);
-        z = Console.ReadLine();
-      }
-      catch(Exception) 
-      {
-        Console.WriteLine("Você digitou uma senha inválida");  
-      }
-    }
-    pedido();
-    Cadastro1 = new Cadastro(n,e,s);
+  IniciarVariavel(); 
+  Console.WriteLine("1:Fazer Login");
+  Console.WriteLine("2:Fazer Cadastro");
+  Login_Cadastro = Console.ReadLine();
+    if(Login_Cadastro == 1)
+  
+  ClienteCadastro();
+  pedido();
+  
   }
     public static void pedido(){
       Pedido = 0;
@@ -81,8 +50,13 @@ class MainClass{
         else if(Pedido == 4){
           ClientePedido("Bolo");
         }
-        else if(Pedido == 5){
+        else if(Pedido == 5)
+        {
           ClientePedido("Bebida");
+        }
+        else if(Pedido == 6)
+        {
+          //Pagamento_(sum);
         }
         else if(Pedido == 8)
         {
@@ -171,6 +145,7 @@ class MainClass{
           foreach(ItemCarrinho i in carrinho.getItemCarrinho())
           {
             sum += i.TotalValor();
+            v = sum;
             Console.WriteLine("Total da compra {0}R$",sum);
           }  
       }
@@ -210,4 +185,51 @@ class MainClass{
       else
         x = 1;   
 }
+  public static void ClienteCadastro()
+  {
+    string nome=""; 
+    string x = "n";
+    while (x =="n")
+    {
+      Console.WriteLine("Digite seu nome");
+      nome = Console.ReadLine();
+      Console.WriteLine("Confirma seu nome?s/n");
+      Console.WriteLine(nome);
+      x = Console.ReadLine();
+    }
+    string endereço ="";
+    string y = "n";
+    while (y =="n")
+    {
+      Console.WriteLine("Digite seu endereço");
+      endereço = Console.ReadLine();
+      Console.WriteLine("Confirma seu endereço?s/n");
+      Console.WriteLine(endereço);
+      y = Console.ReadLine();
+    }
+    double senha = 0; 
+    string z = "n";
+    while (z =="n")
+    {
+      try
+      {
+        Console.WriteLine("Digite sua senha");
+        senha = double.Parse(Console.ReadLine());
+        Console.WriteLine("Confirma sua senha?s/n");
+        Console.WriteLine(senha);
+        z = Console.ReadLine();
+      }
+      catch(Exception) 
+      {
+        Console.WriteLine("Você digitou uma senha inválida");  
+      }
+    cadastro.getCadastro().Add(new Cadastro(nome,endereço,senha));
+
+  }
+  }
+    public static void ClienteLogin()
+    {
+      Console.WriteLine("Escreva seu nome");
+      
+    }
 }
