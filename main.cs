@@ -300,6 +300,5 @@ class MainClass{
       {
         Console.WriteLine("{0},{1}",i.produto.getCodigo(), i.produto.getNome());
       }
-    
     }
 }
