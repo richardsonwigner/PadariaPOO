@@ -10,6 +10,7 @@ class MainClass{
   static double v;
   static string c; 
   static int numero;
+  static string ValidarNome;
   static Pagamento Pagamento1 = new Pagamento(numero,c);
 
   public static void Main (string[] args) {
@@ -237,9 +238,9 @@ class MainClass{
   cadastro.getCadastro().Add(new Cadastro(nome,endereço,senha));
   ClienteLogin();
   }
-    public static void ClienteLogin()
+    public static string ClienteLogin()
     {
-      string ValidarNome;
+      string ValidarNome = " ";
       int ValidarSenha;
       int x = 0;
       while(x==0)
@@ -280,17 +281,23 @@ class MainClass{
         }    
       }
       pedido();
+      return ValidarNome;
     }
     
     public static void Pagamento_ (){
-     
       Console.WriteLine("Digite o numero do seu cartão: ");
       numero = int.Parse(Console.ReadLine());
       Console.WriteLine("Código de Segurança: ");
       c = Console.ReadLine();
       Console.WriteLine("Total da compra {0}R$",v);
       Pagamento1.processarPagamento(v,c);
-        Console.WriteLine("Nome: {0}, Endereço: {1}",cadastro.getNome(),cadastro.getEndereço());
+      foreach(Cadastro i in cadastro.getCadastro())
+      {
+        if(i.getNome() == ClienteLogin())
+        {
+        Console.WriteLine("Nome: {0}, Endereço: {1}",i.getNome(),i.getEndereço());
+        }
+      }
       foreach(ItemCarrinho i in carrinho.getItemCarrinho())
       {
         Console.WriteLine("{0},{1}",i.produto.getCodigo(), i.produto.getNome());
