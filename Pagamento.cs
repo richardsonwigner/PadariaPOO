@@ -1,29 +1,41 @@
 using System;
 
 
-class Pagamento{
+class Pagamento
+{
+  string codSeg;
+  double limite =200; 
+  int numero;
+  double valor;
 
-string codSeg;
-double limite =200; 
-int numero;
-
-public Pagamento (int n, string c ){
- numero = n;  
- codSeg = c;
+  public Pagamento (int n, string c ){
+    numero = n;  
+    codSeg = c;
 }
 
-public bool processarPagamento(double valor, string chave){
-  if (valor <= limite && chave== codSeg){
+  public bool processarPagamento(double valor,string chave){
+    if (valor <= limite && chave== codSeg)
+    {
       limite-=valor;
-      Console.WriteLine("Valor pago: {0} ", valor);
       return true;
     }
-    else{
+    else
+    {
       return false;
     }
+}
+  public double getLimite()
+  {
+    return limite;
   }
- 
+  public double getValor()
+  {
+    return valor;
+  }
+
+
+} 
  
  
 
-}
+

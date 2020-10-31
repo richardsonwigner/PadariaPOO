@@ -11,7 +11,7 @@ class MainClass{
   static string c; 
   static int numero;
   static string ValidarNome = "";
-  static Pagamento Pagamento1 = new Pagamento(numero,c);
+  static Pagamento Cartao = new Pagamento(numero,c);
 
   public static void Main (string[] args) {
   int Login_Cadastro;
@@ -238,7 +238,7 @@ class MainClass{
   cadastro.getCadastro().Add(new Cadastro(nome,endereço,senha));
   ClienteLogin();
   }
-    public static string ClienteLogin()
+    public static void ClienteLogin()
     {
       int ValidarSenha;
       int x = 0;
@@ -287,8 +287,9 @@ class MainClass{
       numero = int.Parse(Console.ReadLine());
       Console.WriteLine("Código de Segurança: ");
       c = Console.ReadLine();
-      Console.WriteLine("Total da compra {0}R$",v);
-      Pagamento1.processarPagamento(v,c);
+      Console.WriteLine("Total da compra {0:2}R$",v);
+      Cartao.processarPagamento(v,c);
+      Console.WriteLine("{0},{1}",Cartao.getLimite(),Cartao.getValor());
       foreach(Cadastro i in cadastro.getCadastro())
       {
         if(i.getNome() == ValidarNome)
