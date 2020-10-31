@@ -1,7 +1,7 @@
 class ItemCarrinho
 {
   public Produto produto;
-  public int qtd;
+  int qtd;
 
   public ItemCarrinho(Produto p,int q)
   {
@@ -11,5 +11,9 @@ class ItemCarrinho
   public double TotalValor()
   {
     return qtd * produto.getValor();
+  }
+  public int getqtd()
+  {
+    return qtd;
   }
 }

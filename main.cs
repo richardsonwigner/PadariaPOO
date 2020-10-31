@@ -23,7 +23,6 @@ class MainClass{
   {
     if(Login_Cadastro == 1)
     {
-      x = 1;
       ClienteLogin();
     }
     else if(Login_Cadastro == 2)
@@ -31,7 +30,6 @@ class MainClass{
       ClienteCadastro();
     }
   }
-  pedido();
   
   }
     public static void pedido(){
@@ -68,7 +66,7 @@ class MainClass{
         else if(Pedido == 6)
         {
          Pagamento_();
-         Pagamento1.processarPagamento(v,c);
+         
         }
         else if(Pedido == 7)
         {
@@ -152,7 +150,7 @@ class MainClass{
           }
           foreach(ItemCarrinho i in carrinho.getItemCarrinho())
           {
-            Console.WriteLine("{0},{1}R$", i.produto.getNome(),i.produto.getValor()*i.qtd); 
+            Console.WriteLine("{0},{1}R$", i.produto.getNome(),i.produto.getValor()*i.getqtd()); 
           }
           foreach(ItemCarrinho i in carrinho.getItemCarrinho())
           {
@@ -235,45 +233,53 @@ class MainClass{
       {
         Console.WriteLine("Você digitou uma senha inválida");  
       }
-    cadastro.getCadastro().Add(new Cadastro(nome,endereço,senha));
-
   }
+  cadastro.getCadastro().Add(new Cadastro(nome,endereço,senha));
+  ClienteLogin();
   }
     public static void ClienteLogin()
     {
       string ValidarNome;
       int ValidarSenha;
       int x = 0;
-      while(x==0){
+      while(x==0)
+      {
         Console.WriteLine("Escreva seu nome");
         ValidarNome = Console.ReadLine();
-        Console.WriteLine("Digite sua senha");
-        ValidarSenha = int.Parse(Console.ReadLine());
         foreach(Cadastro i in cadastro.getCadastro())
         {
           if(i.getNome() == ValidarNome)
           {
-            if(i.getSenha() == ValidarSenha)
-            {
-              Console.WriteLine("Login Realizado");
-              x = 1;
-            }
+            Console.WriteLine("Digite sua senha");
+            ValidarSenha = int.Parse(Console.ReadLine());
+              if(i.getSenha() == ValidarSenha)
+              { 
+                Console.WriteLine("Login Realizado");
+                x = 1;
+              }
+              else
+              {
+                try
+                {
+                  Console.WriteLine("Senha incorreta");
+                  Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
+                  x = int.Parse(Console.ReadLine());
+                }
+                  catch(Exception)
+                  {
+                    Console.WriteLine("Apenas números são aceitos");
+                  }
+              }
           }
           else
           {
-           try
-            {
-              Console.WriteLine("Nome ou Senha incorretos");
-              Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
+            Console.WriteLine("Nome inválido");
+            Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
               x = int.Parse(Console.ReadLine());
-            }
-            catch(Exception)
-            {
-              Console.WriteLine("Apenas números são aceitos");
-            }
           }
-        } 
         }    
+      }
+      pedido();
     }
     
     public static void Pagamento_ (){
@@ -283,8 +289,12 @@ class MainClass{
       Console.WriteLine("Código de Segurança: ");
       c = Console.ReadLine();
       Console.WriteLine("Total da compra {0}R$",v);
-
-      
-      
+      Pagamento1.processarPagamento(v,c);
+        Console.WriteLine("Nome: {0}, Endereço: {1}",cadastro.getNome(),cadastro.getEndereço());
+      foreach(ItemCarrinho i in carrinho.getItemCarrinho())
+      {
+        Console.WriteLine("{0},{1}",i.produto.getCodigo(), i.produto.getNome());
+      }
+    
     }
 }

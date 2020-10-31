@@ -23,10 +23,7 @@ public bool processarPagamento(double valor, string chave){
     }
   }
  
- public void Relatorio (){
-   Console.WriteLine("Nome: {0}, Endere");
-   
- }
+ 
  
 
 }

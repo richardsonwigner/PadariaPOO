@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 
 class Cadastro{
-  string nome;
-  string endereço;
-  double senha;
+  string n;
+  string e;
+  double s;
   List<Cadastro> ClienteCadastro = new List<Cadastro>();
   public Cadastro()
   {
 
   }
-  public Cadastro(string n,string e,double s)
+  public Cadastro(string nome,string endereço,double senha)
   {
-    nome = n;
-    endereço = e;
-    senha = s;
+    n = nome;
+    e = endereço;
+    s = senha;
 
   }
   public List<Cadastro> getCadastro() 
@@ -23,15 +23,15 @@ class Cadastro{
   }
   public string getNome()
   {
-    return nome;
+    return n;
   }
    public string getEndereço()
    {
-    return endereço;
+    return e;
   }
   public double getSenha()
   {
-    return senha;
+    return s;
   }
 
   
