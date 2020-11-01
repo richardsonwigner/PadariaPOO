@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 class Cadastro{
   string n;
-  string e;
   double s;
   List<Cadastro> ClienteCadastro = new List<Cadastro>();
   public Cadastro()
   {
 
   }
-  public Cadastro(string nome,string endereço,double senha)
+  public Cadastro(string nome,double senha)
   {
     n = nome;
-    e = endereço;
     s = senha;
 
   }
@@ -24,10 +22,6 @@ class Cadastro{
   public string getNome()
   {
     return n;
-  }
-   public string getEndereço()
-   {
-    return e;
   }
   public double getSenha()
   {

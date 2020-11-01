@@ -19,16 +19,23 @@ class MainClass{
   Console.WriteLine("2:Fazer Cadastro");
   Login_Cadastro = int.Parse(Console.ReadLine());
   int x = 0;
-  while(x == 0)
+  if(Login_Cadastro == 1 || Login_Cadastro == 2)
   {
-    if(Login_Cadastro == 1)
+    while(x == 0)
     {
-      ClienteLogin();
+      if(Login_Cadastro == 1)
+      {
+        ClienteLogin();
+      }
+      else if(Login_Cadastro == 2)
+      {
+        ClienteCadastro();
+      }
     }
-    else if(Login_Cadastro == 2)
-    {
-      ClienteCadastro();
-    }
+  }
+  else
+  {
+    Console.WriteLine("Número Inválido");
   }
   }
     public static void pedido(){
@@ -206,16 +213,6 @@ class MainClass{
       Console.WriteLine(nome);
       x = Console.ReadLine();
     }
-    string endereço ="";
-    string y = "n";
-    while (y =="n")
-    {
-      Console.WriteLine("Digite seu endereço");
-      endereço = Console.ReadLine();
-      Console.WriteLine("Confirma seu endereço?s/n");
-      Console.WriteLine(endereço);
-      y = Console.ReadLine();
-    }
     double senha = 0; 
     string z = "n";
     while (z =="n")
@@ -233,7 +230,7 @@ class MainClass{
         Console.WriteLine("Você digitou uma senha inválida");  
       }
   }
-  cadastro.getCadastro().Add(new Cadastro(nome,endereço,senha));
+  cadastro.getCadastro().Add(new Cadastro(nome,senha));
   ClienteLogin();
   }
     public static void ClienteLogin()
@@ -253,7 +250,7 @@ class MainClass{
               if(i.getSenha() == ValidarSenha)
               { 
                 Console.WriteLine("Login Realizado");
-                x = 1;
+                pedido();
               }
               else
               {
@@ -262,6 +259,10 @@ class MainClass{
                   Console.WriteLine("Senha incorreta");
                   Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
                   x = int.Parse(Console.ReadLine());
+                  if(x == 1)
+                  {
+                    ClienteCadastro();
+                  }
                 }
                   catch(Exception)
                   {
@@ -274,13 +275,18 @@ class MainClass{
             Console.WriteLine("Nome inválido");
             Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
               x = int.Parse(Console.ReadLine());
+              if(x == 1)
+              {
+                ClienteCadastro();
+              }
           }
         }    
       }
-      pedido();
     }
     
     public static void Pagamento_ (){
+      Console.WriteLine("Digite seu endereço ");
+      string Endereço = Console.ReadLine();
       Console.WriteLine("Digite o numero do seu cartão: ");
       numero = int.Parse(Console.ReadLine());
       Console.WriteLine("Código de Segurança: ");
@@ -292,7 +298,8 @@ class MainClass{
       {
         if(i.getNome() == ValidarNome)
         {
-        Console.WriteLine("Nome: {0}, Endereço: {1}",i.getNome(),i.getEndereço());
+        Console.WriteLine("Nome: {0}, Endereço: {1}",i.getNome(),Endereço);
+        break;
         }
       }
       foreach(ItemCarrinho i in carrinho.getItemCarrinho())
