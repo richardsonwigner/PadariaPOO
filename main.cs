@@ -35,31 +35,38 @@ class MainClass{
     }
   }  
   }
-    public static void pedido(){
+    public static void pedido()
+    {
       Pedido = 0;
       string x1 = "s";
-      while(x1 == "s"){
+      while(x1 == "s")
+      {
         Console.WriteLine("Escolha o tipo de produto");
         Console.WriteLine("1:Pão");
         Console.WriteLine("2:Leite");
         Console.WriteLine("3:Biscoito");
         Console.WriteLine("4:Bolo");
         Console.WriteLine("5:Bebidas");
-          if(carrinho.getItemCarrinho().Count != 0 && x1 == "s"){
-        Console.WriteLine("6:Realizar Pagamento");
-        Console.WriteLine("7:Verificar Carrinho");
-       }
+          if(carrinho.getItemCarrinho().Count != 0 && x1 == "s")
+          {
+          Console.WriteLine("6:Realizar Pagamento");
+          Console.WriteLine("7:Verificar Carrinho");
+          }
         Pedido = int.Parse(Console.ReadLine());
-        if(Pedido == 1){
+        if(Pedido == 1)
+        {
           ClientePedido("Pao");
         }
-        else if(Pedido == 2){
+        else if(Pedido == 2)
+        {
           ClientePedido("Leite");
         }
-        else if(Pedido == 3){
+        else if(Pedido == 3)
+        {
         ClientePedido("Biscoito");
         }
-        else if(Pedido == 4){
+        else if(Pedido == 4)
+        {
           ClientePedido("Bolo");
         }
         else if(Pedido == 5)
@@ -74,7 +81,7 @@ class MainClass{
         {
           VerificarCarrinho();
         }
-    }
+      }
     }
     public static void IniciarVariavel(){
       loja.produtos.Add(new Produto(0, "Pão Francês", 20,0.5f,"Pao"));
@@ -115,7 +122,7 @@ class MainClass{
     {
       if(produtos.getCategoria() == categoria)
       {
-      Console.WriteLine("Código:{0} Produto:{1} {2:C2}R$,Quantidade{3}",produtos.getCodigo(),produtos.getNome(),produtos.getValor(),produtos.getQtd());
+      Console.WriteLine("Código:{0} Produto:{1} {2:C2}R$:Quantidade{3}",produtos.getCodigo(),produtos.getNome(),produtos.getValor(),produtos.getQtd());
       }     
     }
     while(x == 0)
@@ -184,6 +191,8 @@ class MainClass{
         foreach(ItemCarrinho i in carrinho.getItemCarrinho())
           if(i.produto.getCodigo() == CodigoPedido)
         {
+          int soma = i.produto.getQtd() + i.getqtd();
+          i.produto.setQtd(soma);
           carrinho.getItemCarrinho().Remove(i);
           x =1;
           break;
@@ -250,7 +259,6 @@ class MainClass{
       {
         Console.WriteLine("Escreva seu nome");
         string ValidarUsuario = Console.ReadLine();
-
         foreach(Cadastro i in cadastro.getCadastro())
         {
           if(i.getNome() == ValidarUsuario)
@@ -287,7 +295,6 @@ class MainClass{
               }
           }
         }
-
       if(UsuarioEncontrado != true)
       {
         Console.WriteLine("Nome inválido");
@@ -307,6 +314,7 @@ class MainClass{
     public static string Pagamento_()
     {
       bool ComprovarPagamento;
+      Console.WriteLine("////PAGAMENTO////");
       Console.WriteLine("Digite seu nome");
       string NomeCliente = Console.ReadLine();      Console.WriteLine("Digite seu endereço");
       string Endereço = Console.ReadLine();
@@ -323,11 +331,11 @@ class MainClass{
           Console.WriteLine("Digite o numero do seu cartão: ");
           numero = int.Parse(Console.ReadLine());
           Console.WriteLine("Total da compra {0:C2}R$",v);
-          Console.WriteLine("Crédito Disponivel:{0:C2}//Número Do Cartão:{1}",Cartao.getLimite(),numero);
-          Console.WriteLine("Nome:{0}//Endereço:{1}",NomeCliente,Endereço);
+          Console.WriteLine("Crédito Disponivel:{0:C2} Número Do Cartão:{1}",Cartao.getLimite(),numero);
+          Console.WriteLine("Nome:{0} Endereço:{1}",NomeCliente,Endereço);
           foreach(ItemCarrinho i in carrinho.getItemCarrinho())
           {
-            Console.WriteLine("{0}:{1}={2:C2}",i.produto.getCodigo(), i.produto.getNome(),i.TotalValor());
+            Console.WriteLine("{0}:{1}:{2:C2}",i.produto.getCodigo(), i.produto.getNome(),i.TotalValor());
           }
           carrinho.getItemCarrinho().Clear();
           Console.WriteLine("1:Continuar Comprando:");

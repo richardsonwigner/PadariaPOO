@@ -5,14 +5,21 @@ class Produto{
   double valor;
   string Categoria;
 
-  public int getCodigo(){
+  public int getCodigo()
+  {
     return codigo;
   }
-  public string getNome(){
+  public string getNome()
+  {
     return nome;
   }
-  public int getQtd(){
+  public int getQtd()
+  {
     return qtd;
+  }
+  public void setQtd(int qtd)
+  {
+    this.qtd = qtd;
   }
   public double getValor(){
     return valor;
