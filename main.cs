@@ -10,7 +10,7 @@ class MainClass{
   static double v;
   static string c; 
   static int numero;
-  static Pagamento Cartao = new Pagamento(c);
+  static Pagamento Cartao = new Pagamento(numero,c);
   public static void Main (string[] args) {
   int Login_Cadastro;
   IniciarVariavel(); 
@@ -156,10 +156,6 @@ class MainClass{
           }
           foreach(ItemCarrinho i in carrinho.getItemCarrinho())
           {
-            Console.WriteLine("{0},{1}R$", i.produto.getNome(),i.produto.getValor()*i.getqtd()); 
-          }
-          foreach(ItemCarrinho i in carrinho.getItemCarrinho())
-          {
             sum += i.TotalValor();
             v = sum;
             Console.WriteLine("Total da compra {0}R$",sum);
@@ -199,7 +195,7 @@ class MainClass{
         }
       }
       else
-        x = 1;   
+       x = 1;   
 }
   public static void ClienteCadastro()
   {
@@ -284,7 +280,7 @@ class MainClass{
                   }
               }
           }
-          
+
           else 
           {
             Console.WriteLine("Nome inválido");
@@ -311,7 +307,7 @@ class MainClass{
       Console.WriteLine("Código de Segurança: ");
       c= Console.ReadLine();
       Console.WriteLine("Total da compra {0}R$",v);
-      Cartao.processarPagamento(v);
+      Cartao.processarPagamento(v,c);
       Console.WriteLine("Limite Disponivel:{0},Número Do Cartão{1}",Cartao.getLimite(),numero);
       Console.WriteLine("Nome: {0}, Endereço: {1}",NomeCliente,Endereço); 
       foreach(ItemCarrinho i in carrinho.getItemCarrinho())
