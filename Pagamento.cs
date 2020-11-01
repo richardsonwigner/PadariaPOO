@@ -4,16 +4,14 @@ class Pagamento
 {
   string codSeg;
   double limite =200; 
-  int numero;
 
 
-  public Pagamento (int n, string c ){
-    numero = n;  
+  public Pagamento (string c){ 
     codSeg = c;
 }
 
-  public bool processarPagamento(double valor,string chave){
-    if (valor <= limite && chave == codSeg)
+  public bool processarPagamento(double valor){
+    if (valor <= limite)
     {
       limite-=valor;
       return true;
@@ -28,7 +26,6 @@ class Pagamento
     return limite;
   }
  
-
 
 } 
  

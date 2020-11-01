@@ -10,8 +10,7 @@ class MainClass{
   static double v;
   static string c; 
   static int numero;
-  static string ValidarNome = "";
-  static Pagamento Cartao = new Pagamento(numero,c);
+  static Pagamento Cartao = new Pagamento(c);
   public static void Main (string[] args) {
   int Login_Cadastro;
   IniciarVariavel(); 
@@ -19,6 +18,7 @@ class MainClass{
   Console.WriteLine("2:Fazer Cadastro");
   Login_Cadastro = int.Parse(Console.ReadLine());
   int x = 0;
+  cadastro.getCadastro().Add(new Cadastro("",000));
   if(Login_Cadastro == 1 || Login_Cadastro == 2)
   {
     while(x == 0)
@@ -203,15 +203,26 @@ class MainClass{
 }
   public static void ClienteCadastro()
   {
-    string nome=""; 
+    Console.WriteLine("////CADASTRO////");
+    string usuario=""; 
     string x = "n";
     while (x =="n")
     {
-      Console.WriteLine("Digite seu nome");
-      nome = Console.ReadLine();
-      Console.WriteLine("Confirma seu nome?s/n");
-      Console.WriteLine(nome);
-      x = Console.ReadLine();
+      Console.WriteLine("Cadastre um usuário");
+      usuario = Console.ReadLine();
+      foreach(Cadastro i in cadastro.getCadastro())
+      {
+        if(i.getNome() == usuario)
+        {
+          Console.WriteLine("Usuário já cadastrado");
+          ClienteCadastro();
+        }
+        else{
+          Console.WriteLine("Confirma usuário?s/n");
+          Console.WriteLine(usuario);
+          x = Console.ReadLine();
+        }
+      }
     }
     double senha = 0; 
     string z = "n";
@@ -230,23 +241,23 @@ class MainClass{
         Console.WriteLine("Você digitou uma senha inválida");  
       }
   }
-  cadastro.getCadastro().Add(new Cadastro(nome,senha));
+  cadastro.getCadastro().Add(new Cadastro(usuario,senha));
   ClienteLogin();
   }
     public static void ClienteLogin()
     {
-      int ValidarSenha;
       int x = 0;
+      Console.WriteLine("////LOGIN////");
       while(x==0)
       {
         Console.WriteLine("Escreva seu nome");
-        ValidarNome = Console.ReadLine();
+        string ValidarUsuario = Console.ReadLine();
         foreach(Cadastro i in cadastro.getCadastro())
         {
-          if(i.getNome() == ValidarNome)
+          if(i.getNome() == ValidarUsuario)
           {
             Console.WriteLine("Digite sua senha");
-            ValidarSenha = int.Parse(Console.ReadLine());
+            int ValidarSenha = int.Parse(Console.ReadLine());
               if(i.getSenha() == ValidarSenha)
               { 
                 Console.WriteLine("Login Realizado");
@@ -263,14 +274,18 @@ class MainClass{
                   {
                     ClienteCadastro();
                   }
+                  else
+                    ClienteLogin();
                 }
                   catch(Exception)
                   {
                     Console.WriteLine("Apenas números são aceitos");
+                    ClienteLogin();
                   }
               }
           }
-          else
+          
+          else 
           {
             Console.WriteLine("Nome inválido");
             Console.WriteLine("Caso não tenha um cadastro digite 1.Digite outro número para realizar o login novamente");
@@ -279,29 +294,26 @@ class MainClass{
               {
                 ClienteCadastro();
               }
-          }
+
+              {
+                ClienteLogin();
+              }
+          }       
+        } 
         }    
       }
-    }
-    
     public static void Pagamento_ (){
-      Console.WriteLine("Digite seu endereço ");
+      Console.WriteLine("Digite seu nome");
+      string NomeCliente = Console.ReadLine();      Console.WriteLine("Digite seu endereço ");
       string Endereço = Console.ReadLine();
       Console.WriteLine("Digite o numero do seu cartão: ");
       numero = int.Parse(Console.ReadLine());
       Console.WriteLine("Código de Segurança: ");
       c= Console.ReadLine();
       Console.WriteLine("Total da compra {0}R$",v);
-      Cartao.processarPagamento(v,c);
-      Console.WriteLine("{0}",Cartao.getLimite());
-      foreach(Cadastro i in cadastro.getCadastro())
-      {
-        if(i.getNome() == ValidarNome)
-        {
-        Console.WriteLine("Nome: {0}, Endereço: {1}",i.getNome(),Endereço);
-        break;
-        }
-      }
+      Cartao.processarPagamento(v);
+      Console.WriteLine("Limite Disponivel:{0},Número Do Cartão{1}",Cartao.getLimite(),numero);
+      Console.WriteLine("Nome: {0}, Endereço: {1}",NomeCliente,Endereço); 
       foreach(ItemCarrinho i in carrinho.getItemCarrinho())
       {
         Console.WriteLine("{0},{1}",i.produto.getCodigo(), i.produto.getNome());
