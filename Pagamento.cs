@@ -7,10 +7,9 @@ class Pagamento
 
 
   public Pagamento (int n){
-    numero = n;  
+    numero = n;
 }
-
-  public bool processarPagamento(double valor,string chave){
+  public bool processarPagamento(double valor){
     if (valor <= limite)
     {
       limite-=valor;
