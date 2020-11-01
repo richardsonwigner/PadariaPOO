@@ -11,31 +11,30 @@ class MainClass{
   static string c; 
   static int numero;
   static Pagamento Cartao = new Pagamento(numero);
-  public static void Main (string[] args) {
-  int Login_Cadastro;
-  IniciarVariavel(); 
-  Console.WriteLine("1:Fazer Login");
-  Console.WriteLine("2:Fazer Cadastro");
-  Login_Cadastro = int.Parse(Console.ReadLine());
-  int x = 0;
-  if(Login_Cadastro == 1 || Login_Cadastro == 2)
+  public static void Main (string[] args)
   {
-    while(x == 0)
+  IniciarVariavel();
+  while(1 == 1)
+  {
+    Console.WriteLine("1:Fazer Login");
+    Console.WriteLine("2:Fazer Cadastro");
+    string Login_Cadastro = Console.ReadLine();
+    if(Login_Cadastro == "1" || Login_Cadastro == "2")
     {
-      if(Login_Cadastro == 1)
-      {
-        ClienteLogin();
-      }
-      else if(Login_Cadastro == 2)
-      {
-        ClienteCadastro();
-      }
+        if(Login_Cadastro == "1")
+        {
+          ClienteLogin();
+        }
+        else if(Login_Cadastro == "2")
+        {
+          ClienteCadastro();
+        }
     }
-  }
-  else
-  {
-    Console.WriteLine("Número Inválido");
-  }
+    else
+    {
+      Console.WriteLine("Número Inválido");
+    }
+  }  
   }
     public static void pedido(){
       Pedido = 0;
@@ -70,8 +69,7 @@ class MainClass{
         }
         else if(Pedido == 6)
         {
-         Pagamento_();
-         
+         x1 = Pagamento_();
         }
         else if(Pedido == 7)
         {
@@ -264,6 +262,7 @@ class MainClass{
               { 
                 Console.WriteLine("Login Realizado");
                 UsuarioEncontrado = true;
+                x = 1;
                 pedido();
               }
               else
@@ -304,7 +303,7 @@ class MainClass{
       }       
         }    
       }
-    public static void Pagamento_()
+    public static string Pagamento_()
     {
       Console.WriteLine("Digite seu nome");
       string NomeCliente = Console.ReadLine();      Console.WriteLine("Digite seu endereço ");
@@ -317,7 +316,7 @@ class MainClass{
         c= Console.ReadLine();
          Console.WriteLine("Total da compra {0:C2}R$",v);
         Cartao.processarPagamento(v,c);
-        Console.WriteLine("Limite Disponivel:{0:C2}//Número Do Cartão{1}",Cartao.getLimite(),numero);
+        Console.WriteLine("Limite Disponivel:{0:C2}//Número Do Cartão:{1}",Cartao.getLimite(),numero);
         Console.WriteLine("Nome:{0}//Endereço:{1}",NomeCliente,Endereço);
         carrinho.getItemCarrinho().Clear();
         foreach(ItemCarrinho i in carrinho.getItemCarrinho())
@@ -326,13 +325,18 @@ class MainClass{
         }
         Console.WriteLine("1:Continuar Comprando:");
         Console.WriteLine("2:Logout");
-        x = 
-          
+        string x = Console.ReadLine();
+          if(x == "2")
+          {
+            return "n";
+          }
+          return "s";
       }
       catch(Exception)
       {
         Console.WriteLine("Numero ou Cartao Inválido");
         Pagamento_();
+        return "s";
       }
     }
 }
