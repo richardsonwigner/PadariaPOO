@@ -2,14 +2,12 @@ using System;
 
 class Pagamento
 {
-  string codSeg;
   double limite =200; 
   int numero;
 
 
-  public Pagamento (int n, string c){
+  public Pagamento (int n){
     numero = n;  
-    codSeg = c;
 }
 
   public bool processarPagamento(double valor,string chave){

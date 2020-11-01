@@ -10,7 +10,7 @@ class MainClass{
   static double v;
   static string c; 
   static int numero;
-  static Pagamento Cartao = new Pagamento(numero,c);
+  static Pagamento Cartao = new Pagamento(numero);
   public static void Main (string[] args) {
   int Login_Cadastro;
   IniciarVariavel(); 
@@ -309,18 +309,30 @@ class MainClass{
       Console.WriteLine("Digite seu nome");
       string NomeCliente = Console.ReadLine();      Console.WriteLine("Digite seu endereço ");
       string Endereço = Console.ReadLine();
-      Console.WriteLine("Digite o numero do seu cartão: ");
-      numero = int.Parse(Console.ReadLine());
-      Console.WriteLine("Código de Segurança: ");
-      c= Console.ReadLine();
-      Console.WriteLine("Total da compra {0}R$",v);
-      Cartao.processarPagamento(v,c);
-      Console.WriteLine("Limite Disponivel:{0}//Número Do Cartão{1}",Cartao.getLimite(),numero);
-      Console.WriteLine("Nome: {0}//Endereço:{1}",NomeCliente,Endereço); 
-      foreach(ItemCarrinho i in carrinho.getItemCarrinho())
+      try
       {
-        Console.WriteLine("{0}:{1}={2}",i.produto.getCodigo(), i.produto.getNome(),i.produto.getQtd());
+        Console.WriteLine("Digite o numero do seu cartão: ");
+        numero = int.Parse(Console.ReadLine());
+        Console.WriteLine("Código de Segurança: ");
+        c= Console.ReadLine();
+         Console.WriteLine("Total da compra {0:C2}R$",v);
+        Cartao.processarPagamento(v,c);
+        Console.WriteLine("Limite Disponivel:{0:C2}//Número Do Cartão{1}",Cartao.getLimite(),numero);
+        Console.WriteLine("Nome:{0}//Endereço:{1}",NomeCliente,Endereço);
+        carrinho.getItemCarrinho().Clear();
+        foreach(ItemCarrinho i in carrinho.getItemCarrinho())
+        {
+          Console.WriteLine("{0}:{1}={2:C2}",i.produto.getCodigo(), i.produto.getNome(),i.TotalValor());
+        }
+        Console.WriteLine("1:Continuar Comprando:");
+        Console.WriteLine("2:Logout");
+        
+          
       }
-      carrinho.getItemCarrinho().Clear();
+      catch(Exception)
+      {
+        Console.WriteLine("Numero ou Cartao Inválido");
+        Pagamento_();
+      }
     }
 }
