@@ -13,12 +13,12 @@ class MainClass{
   static Pagamento Cartao = new Pagamento(numero,c);
   public static void Main (string[] args) {
   int Login_Cadastro;
+  cadastro.getCadastro().Add(new Cadastro("",0));
   IniciarVariavel(); 
   Console.WriteLine("1:Fazer Login");
   Console.WriteLine("2:Fazer Cadastro");
   Login_Cadastro = int.Parse(Console.ReadLine());
   int x = 0;
-  cadastro.getCadastro().Add(new Cadastro("",000));
   if(Login_Cadastro == 1 || Login_Cadastro == 2)
   {
     while(x == 0)
@@ -290,7 +290,6 @@ class MainClass{
               {
                 ClienteCadastro();
               }
-
               {
                 ClienteLogin();
               }
