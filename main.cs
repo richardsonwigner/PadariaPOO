@@ -326,7 +326,7 @@ class MainClass{
         }
         Console.WriteLine("1:Continuar Comprando:");
         Console.WriteLine("2:Logout");
-        
+        x = 
           
       }
       catch(Exception)
