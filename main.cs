@@ -118,6 +118,7 @@ class MainClass{
     double sum = 0;
     Pedido = -1;
     Produto ProdutoEscolhido = null;
+    Console.WriteLine("////PRODUTOS////");
     foreach(Produto produtos in loja.produtos)
     {
       if(produtos.getCategoria() == categoria)
@@ -330,14 +331,16 @@ class MainClass{
         {
           Console.WriteLine("Digite o numero do seu cartão: ");
           numero = int.Parse(Console.ReadLine());
+          Console.WriteLine("////COMPRA FINALIZADA////");
           Console.WriteLine("Total da compra {0:C2}R$",v);
           Console.WriteLine("Crédito Disponivel:{0:C2} Número Do Cartão:{1}",Cartao.getLimite(),numero);
           Console.WriteLine("Nome:{0} Endereço:{1}",NomeCliente,Endereço);
           foreach(ItemCarrinho i in carrinho.getItemCarrinho())
           {
-            Console.WriteLine("{0}:{1}:{2:C2}",i.produto.getCodigo(), i.produto.getNome(),i.TotalValor());
+            Console.WriteLine("{0}: {1}:{2:C2}",i.produto.getCodigo(), i.produto.getNome(),i.TotalValor());
           }
           carrinho.getItemCarrinho().Clear();
+          Console.WriteLine("////COMPRA FINALIZADA////");
           Console.WriteLine("1:Continuar Comprando:");
           Console.WriteLine("2:Logout");
           string x = Console.ReadLine();
